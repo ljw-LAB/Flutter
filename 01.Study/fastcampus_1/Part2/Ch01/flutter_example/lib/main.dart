@@ -1,168 +1,85 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
-    home: Scaffold(
-      appBar: AppBar(
-        title: Text('study to container'),
-      ),
-      body: Body(),
-    ),
+    home: HomeWidget(),
   ));
 }
 
-class Body extends StatelessWidget {
-  const Body({super.key});
+class HomeWidget extends StatelessWidget {
+  const HomeWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      // height: double.infinity,
-      // width: double.infinity,
-      // color: Colors.grey,
-      // child: Column(
-      //   mainAxisSize: MainAxisSize.max,
-      //   mainAxisAlignment: MainAxisAlignment.center,
-      //   crossAxisAlignment: CrossAxisAlignment.center,
-      //   children: [
-      //     Container(
-      //       width: 100,
-      //       height: 80,
-      //       color: Colors.red,
-      //       child: Text('container'),
-      //     ),
-      //     Container(
-      //       width: 100,
-      //       height: 80,
-      //       color: Colors.green,
-      //       child: Text('container'),
-      //     ),
-      //     Container(
-      //       width: 100,
-      //       height: 80,
-      //       color: Colors.blue,
-      //       child: Text('container'),
-      //     ),
-      //   ],
-      // ),
-      // child: Row(
-      //   // mainAxisSize: MainAxisSize.max,
-      //   mainAxisAlignment: MainAxisAlignment.center,
-      //   crossAxisAlignment: CrossAxisAlignment.center,
-      //   children: [
-      //     Container(
-      //       width: 100,
-      //       height: 80,
-      //       color: Colors.red,
-      //       child: Text('container'),
-      //     ),
-      //     Container(
-      //       width: 100,
-      //       height: 80,
-      //       color: Colors.green,
-      //       child: Text('container'),
-      //     ),
-      //     Container(
-      //       width: 100,
-      //       height: 80,
-      //       color: Colors.blue,
-      //       child: Text('container'),
-      //     ),
-      //   ],
-      // ),
-      // child: Column(
-      //   children: [
-      //     Row(
-      //       // mainAxisSize: MainAxisSize.max,
-      //       mainAxisAlignment: MainAxisAlignment.center,
-      //       crossAxisAlignment: CrossAxisAlignment.center,
-      //       children: [
-      //         Container(
-      //           width: 100,
-      //           height: 80,
-      //           color: Colors.red,
-      //           child: Text('container'),
-      //         ),
-      //         Container(
-      //           width: 100,
-      //           height: 80,
-      //           color: Colors.green,
-      //           child: Text('container'),
-      //         ),
-      //         Container(
-      //           width: 100,
-      //           height: 80,
-      //           color: Colors.blue,
-      //           child: Text('container'),
-      //         ),
-      //       ],
-      //     ),
-      //     Container(
-      //       width: 300,
-      //       height: 120,
-      //       color: Colors.grey,
-      //       child: Text('container'),
-      //     )
-      //   ],
-      // ),
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          // Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            Container(
-              color: Colors.grey,
-              width: 100,
-              height: 100,
-              margin: EdgeInsets.symmetric(horizontal: 8),
-            ),
-            Container(
-              color: Colors.grey,
-              width: 100,
-              height: 100,
-              margin: EdgeInsets.symmetric(horizontal: 8),
-            ),
-            Container(
-              color: Colors.grey,
-              width: 100,
-              height: 100,
-              margin: EdgeInsets.symmetric(horizontal: 8),
-            ),
-            Container(
-              color: Colors.grey,
-              width: 100,
-              height: 100,
-              margin: EdgeInsets.symmetric(horizontal: 8),
-            ),
-            Container(
-              color: Colors.grey,
-              width: 100,
-              height: 100,
-              margin: EdgeInsets.symmetric(horizontal: 8),
-            ),
-            Container(
-              color: Colors.grey,
-              width: 100,
-              height: 100,
-              margin: EdgeInsets.symmetric(horizontal: 8),
-            ),
-            Container(
-              color: Colors.grey,
-              width: 100,
-              height: 100,
-              margin: EdgeInsets.symmetric(horizontal: 8),
-            ),
-            Container(
-              color: Colors.grey,
-              width: 100,
-              height: 100,
-              margin: EdgeInsets.symmetric(horizontal: 8),
-            ),
-          ],
-        ),
+    return SafeArea(
+      child: Scaffold(
+        body: ConstraitWidget(),
       ),
+    );
+  }
+}
+
+class ConstraitWidget extends StatelessWidget {
+  const ConstraitWidget({super.key});
+  // ConstraitWidget란 ui를 그릴 때 제약 사항을 뜻함.
+  @override
+  Widget build(BuildContext context) {
+    // return Container(
+    //   height: 500,
+    //   width: 500,
+    //   color: Colors.blue,
+    //   child: Center(
+    //     child: OverflowBox(
+    //       // UnconstrainedBox(
+    //       child: Container(
+    //         width: 300,
+    //         height: 700,
+    //         color: Colors.green,
+    //       ),
+    //     ),
+    //   ),
+    // );
+    return Row(
+      children: [
+        // Expanded(
+        //   child: Container(
+        //     color: Colors.blue,
+        //     child: Text(
+        //       'hello world hello world hello world hello world hello world hello world hello world hello world',
+        //       style: TextStyle(fontSize: 30),
+        //     ),
+        //   ),
+        // ),
+        // Expanded(
+        //   child: Container(
+        //     color: Colors.red,
+        //     child: Text(
+        //       'hello world',
+        //       style: TextStyle(fontSize: 30),
+        //     ),
+        //   ),
+        // ),
+        Flexible(
+          child: Container(
+            color: Colors.blue,
+            child: Text(
+              'hello world hello world hello world hello world hello world hello world hello world hello world',
+              style: TextStyle(fontSize: 30),
+            ),
+          ),
+        ),
+        Flexible(
+          child: Container(
+            color: Colors.red,
+            child: Text(
+              'hello world',
+              style: TextStyle(fontSize: 30),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
