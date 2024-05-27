@@ -1,0 +1,86 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Test'),
+        ),
+        body: TestScreen(),
+      ),
+    );
+  }
+}
+
+class TestScreen extends StatefulWidget {
+  @override
+  MyFormState createState() => MyFormState();
+}
+
+class MyFormState extends State<TestScreen> {
+  final _formKey = GlobalKey<FormState>();
+  String? firstName;
+  String? lastName;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text('Form Test'),
+        Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'FirstName',
+                  ),
+                  validator: (value) {
+                    if (value?.isEmpty ?? false) {
+                      return 'Please enter first name';
+                    }
+                    return null;
+                  },
+                  onSaved: (String? value) {
+                    firstName = value;
+                  },
+                ),
+                TextFormField(
+                  decoration: InputDecoration(
+                    labelText: 'LastName',
+                  ),
+                  validator: (value) {
+                    if (value?.isEmpty ?? false) {
+                      return 'Please enter last name';
+                    }
+                    return null;
+                  },
+                  onSaved: (String? value) {
+                    lastName = value;
+                  },
+                ),
+              ],
+            )),
+        ElevatedButton(
+            onPressed: () {
+              if (_formKey.currentState?.validate() ?? false) {
+                _formKey.currentState?.save();
+                print('firstName " $firstName, lastName : $lastName');
+              }
+            },
+            child: Text('submit')),
+      ],
+    );
+  }
+}
