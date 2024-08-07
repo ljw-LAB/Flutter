@@ -1,0 +1,89 @@
+// ignore_for_file: prefer_const_constructors, sort_child_properties_last
+
+import 'dart:async';
+import 'dart:isolate';
+
+import 'package:flutter/material.dart';
+
+void main() {
+  runApp(MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  @override
+  State<MyApp> createState() => MyAppState();
+}
+
+myIsolate(SendPort mainport) {
+  ReceivePort isoPort = ReceivePort();
+  mainport.send({'port': isoPort.sendPort});
+
+  isoPort.listen((message) {
+    if (message['msg'] != 'bye') {
+      int count = message['msg'];
+      mainport.send({'msg': count * count});
+    } else {
+      isoPort.close();
+    }
+  });
+}
+
+class MyAppState extends State<MyApp> {
+  String result = '';
+
+  void onPress() async {
+    ReceivePort mainport = ReceivePort();
+    await Isolate.spawn(myIsolate, mainport.sendPort);
+
+    SendPort? isoPort;
+    mainport.listen((message) {
+      if (message['port'] != null) {
+        isoPort = message['port'];
+      } else if (message['msg'] != null) {
+        setState(() {
+          result = 'msg : ${message['msg']}';
+        });
+      }
+    });
+
+    int count = 0;
+
+    Timer.periodic(Duration(seconds: 1), (timer) {
+      count++;
+      if (count < 6) {
+        isoPort?.send({'msg': count});
+      } else {
+        isoPort?.send({'msg': 'bye'});
+        mainport.close();
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('Test'),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                result,
+                style: TextStyle(
+                  fontSize: 30,
+                ),
+              ),
+              ElevatedButton(
+                child: Text('test1'),
+                onPressed: onPress,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
