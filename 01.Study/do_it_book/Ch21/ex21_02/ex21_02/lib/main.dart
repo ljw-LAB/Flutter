@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, curly_braces_in_flow_control_structures, unnecessary_overrides, avoid_print, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -60,6 +60,49 @@ class MyApp extends StatelessWidget {
 class MyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return GetX<CounerController>(
+      builder: (controller) => Container(
+        color: Colors.deepOrange,
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'GetX : ${controller.count}, ${controller.isChecked.value}, ${controller.title.value}',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
+              Text(
+                'GetX : ${controller.user.value.nmae}, ${controller.user.value.age}',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),
+              ),
+              ElevatedButton(
+                child: Text('change'),
+                onPressed: () {
+                  controller.count.value++;
+                  if (controller.title.value == 'hello')
+                    controller.title.value = 'world';
+                  else
+                    controller.title.value = 'hello';
+                  controller.isChecked.value = !controller.isChecked.value;
+
+                  if (controller.user.value.nmae == 'kkang')
+                    controller.user.value.nmae = 'kim';
+                  else
+                    controller.user.value.nmae = 'kkang';
+                },
+              )
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
