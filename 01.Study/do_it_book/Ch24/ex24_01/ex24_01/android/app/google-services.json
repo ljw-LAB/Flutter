@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "105820747490",
+    "project_id": "ljwlab-test-project0-v1",
+    "storage_bucket": "ljwlab-test-project0-v1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:105820747490:android:f8434f0ba8d304586d50bb",
+        "android_client_info": {
+          "package_name": "com.example.ex24_01"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD0gqcsE0zbftUy62-VypPftatQXhNLm-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
