@@ -1,11 +1,13 @@
 import 'dart:convert';
 
+import 'package:firebase_analytics/firebase_analytics.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:personality_test/detail/detail_page.dart';
 
 class QuestionPage extends StatefulWidget {
-  final String questions;
-  const QuestionPage({super.key, required this.questions});
+  final String question;
+  const QuestionPage({super.key, required this.question});
 
   @override
   State<QuestionPage> createState() => _QuestionPageState();
@@ -13,7 +15,7 @@ class QuestionPage extends StatefulWidget {
 
 class _QuestionPageState extends State<QuestionPage> {
   String title = '';
-  int selectNumber = 1;
+  int selectNumber = -1;
 
   Future<String> loadAsset(String fileName) async {
     return await rootBundle.loadString('res/api/$fileName.json');
@@ -69,7 +71,7 @@ class _QuestionPageState extends State<QuestionPage> {
             ),
             body: Column(
               children: [
-                Text(questions['questions'].toString()),
+                Text(questions['question'].toString()),
                 Expanded(
                   child: ListView.builder(
                     itemCount: widgets.length,
@@ -82,13 +84,37 @@ class _QuestionPageState extends State<QuestionPage> {
                 selectNumber == -1
                     ? Container()
                     : ElevatedButton(
-                        onPressed: () {}, child: const Text('성격 보기'))
+                        // onPressed: () {
+                        //   Navigator.of(context).pushReplacement(
+                        //       MaterialPageRoute(builder: (context) {
+                        //     return DetailPage(
+                        //         answer: questions['answer'][selectNumber],
+                        //         question: questions['question']);
+                        //   }));
+                        // },
+                        onPressed: () async {
+                          await FirebaseAnalytics.instance.logEvent(
+                            name: "personal_select",
+                            parameters: {
+                              "test_name": title,
+                              "select": selectNumber
+                            },
+                          ).then((result) => {
+                                Navigator.of(context).pushReplacement(
+                                    MaterialPageRoute(builder: (context) {
+                                  return DetailPage(
+                                      answer: questions['answer'][selectNumber],
+                                      question: questions['question']);
+                                }))
+                              });
+                        },
+                        child: const Text('성격 보기'))
               ],
             ),
           );
         }
       },
-      future: loadAsset(widget.questions),
+      future: loadAsset(widget.question),
     );
   }
 }
