@@ -38,7 +38,34 @@ class AnimalSounds extends StatelessWidget {
           child: Lottie.asset('lottie/cat.json'),
         ),
       ),
-      body: Column(),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(top: 10.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  children: [
+                    Image.asset(
+                      "images/bear.png",
+                      height: 100,
+                    )
+                  ],
+                ),
+                Column(
+                  children: [
+                    Image.asset(
+                      "images/fox.png",
+                      height: 100,
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
