@@ -38,14 +38,47 @@ class Buttons extends StatelessWidget {
               //  onPressed: null,
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.red,
-                  shape: const RoundedRectangleBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(10)))),
+                backgroundColor: Colors.red,
+                shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
+                foregroundColor: Colors.black,
+                fixedSize: const Size(200, 30),
+                elevation: 0,
+              ),
+
               child: const Text(
                 'Elvated button',
-                style: TextStyle(color: Colors.white),
+                // style: TextStyle(color: Colors.white),
               ),
             ),
+            OutlinedButton(
+                onPressed: () {},
+                style: OutlinedButton.styleFrom(
+                  side: const BorderSide(
+                    color: Colors.red,
+                    width: 2.0,
+                  ),
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  fixedSize: const Size(250, 30),
+                ),
+                child: const Text('Outlined button')),
+            FilledButton(
+                onPressed: () {},
+                style: FilledButton.styleFrom(
+                  // foregroundColor: Colors.black,
+                  shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                  ),
+                  fixedSize: const Size(200, 30),
+                ),
+                child: const Text('Filled button')),
           ],
         ),
       ),
