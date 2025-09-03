@@ -27,7 +27,8 @@ class Buttons extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor:
+            Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Flutter Buttons'),
       ),
       body: Center(
@@ -62,15 +63,16 @@ class Buttons extends StatelessWidget {
                     width: 2.0,
                   ),
                   shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    borderRadius: BorderRadius.all(
+                        Radius.circular(10)),
                   ),
                   fixedSize: const Size(250, 30),
                 ),
                 child: const Text('Outlined button')),
-            FilledButton(
+            FilledButton.tonal(
                 onPressed: () {},
                 style: FilledButton.styleFrom(
-                  // foregroundColor: Colors.black,
+                  foregroundColor: Colors.red,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(10),
@@ -79,6 +81,21 @@ class Buttons extends StatelessWidget {
                   fixedSize: const Size(200, 30),
                 ),
                 child: const Text('Filled button')),
+            TextButton(
+                onPressed: () {},
+                style: TextButton.styleFrom(
+                    foregroundColor: Colors.deepPurple,
+                    backgroundColor: const Color.fromARGB(
+                        255, 241, 230, 244)),
+                child: const Text('Text Button')),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.home_rounded,
+                size: 40,
+                color: Colors.black,
+              ),
+            )
           ],
         ),
       ),
