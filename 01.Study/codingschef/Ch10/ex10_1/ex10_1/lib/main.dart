@@ -95,8 +95,94 @@ class Buttons extends StatelessWidget {
                 size: 40,
                 color: Colors.black,
               ),
-            )
+            ),
+            FloatingActionButton(
+              onPressed: () {},
+              shape: const RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.all(Radius.circular(30)),
+              ),
+              backgroundColor: Colors.red,
+              child: const Icon(
+                Icons.add,
+                color: Colors.white,
+                size: 20,
+              ),
+            ),
+            FloatingActionButton.extended(
+              onPressed: () {},
+              label: const Text(
+                'Add',
+                style: TextStyle(
+                  color: Colors.white,
+                ),
+              ),
+              icon: const Icon(
+                Icons.add,
+                color: Colors.white,
+              ),
+              backgroundColor: Colors.black,
+              shape: const RoundedRectangleBorder(
+                borderRadius:
+                    BorderRadius.all(Radius.circular(30)),
+              ),
+              elevation: 0,
+            ),
+            // Container(
+            //   width: 150,
+            //   height: 40,
+            //   alignment: Alignment.center,
+            //   decoration: BoxDecoration(
+            //     borderRadius: BorderRadius.circular(20),
+            //     gradient: const LinearGradient(
+            //       begin: Alignment.topLeft,
+            //       end: Alignment.bottomRight,
+            //       colors: [Colors.blue, Colors.red],
+            //     ),
+            //   ),
+            //   child: FilledButton(
+            //     onPressed: () {},
+            //     child: const Text(
+            //       'Filled button',
+            //       style: TextStyle(
+            //           color: Colors.white,
+            //           fontWeight: FontWeight.w600),
+            //     ),
+            //   ),
+            // ),
+            Container(
+              width: 150,
+              height: 40,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                gradient: const LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [Colors.blue, Colors.red],
+                ),
+              ),
+              child: const Text(
+                'Filled button',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.w600),
+              ),
+            ),
           ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        shape: const RoundedRectangleBorder(
+          borderRadius:
+              BorderRadius.all(Radius.circular(30)),
+        ),
+        backgroundColor: Colors.red,
+        child: const Icon(
+          Icons.add,
+          color: Colors.white,
+          size: 20,
         ),
       ),
     );
