@@ -1,3 +1,4 @@
+import 'package:ex10_2/page_a.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -48,7 +49,13 @@ class MyHomePage extends StatelessWidget {
               height: 20,
             ),
             FilledButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (ctx) => const PageA(),
+                    ));
+              },
               child: const Text(
                 'Go to Page A',
               ),

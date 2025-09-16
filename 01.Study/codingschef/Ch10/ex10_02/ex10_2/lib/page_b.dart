@@ -1,3 +1,4 @@
+import 'package:ex10_2/main.dart';
 import 'package:flutter/material.dart';
 
 class PageB extends StatelessWidget {
@@ -11,6 +12,7 @@ class PageB extends StatelessWidget {
             Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Page B'),
         centerTitle: true,
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: Column(
@@ -24,7 +26,13 @@ class PageB extends StatelessWidget {
               height: 20,
             ),
             FilledButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (ctx) => const MyHomePage(),
+                    ));
+              },
               child: const Text(
                 'Go to Home Page',
               ),
